@@ -29,7 +29,7 @@
             </div>
       
             <div class="centered">
-              <button class="my_btn">LOAD MORE</button>
+              <a href="{{route('comics.create')}}" class="my_btn">INSERISCI ALTRI COMICS</a>
             </div>
       
           </div>

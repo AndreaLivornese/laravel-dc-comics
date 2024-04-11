@@ -22,7 +22,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view("comics.inserimento");
     }
 
     /**
@@ -30,7 +30,30 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newComic = new Comic();
+    
+        $newComic->title = $data['title'];
+        $newComic->description = $data['description'];
+        $newComic->thumb = $data['src-img'];
+        $newComic->price = $data['price'];
+        $newComic->series = $data['series'];
+        $newComic->sale_date = $data['sale_date'];
+        $newComic->type = $data['type'];
+
+        //crea un arrey di parole dall stringa 
+        $str = explode(" ", $data['artists']);
+        $newComic->artists = $str;
+
+        //crea un arrey di parole dall stringa
+        $str = explode(" ", $data['writers']);
+        $newComic->writers = $str;
+
+        $newComic->save();
+
+        echo "Dati correttamente inseriti. Ti stiamo rindirizzando alla pagina home...";
+        return redirect()->route('comics.index');
     }
 
     /**
