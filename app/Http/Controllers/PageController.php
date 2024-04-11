@@ -14,7 +14,7 @@ class PageController extends Controller
     {
         $comics = Comic::all();
 
-        return view("home", compact('comics'));
+        return view("comics.home", compact('comics'));
     }
 
     /**
@@ -36,9 +36,9 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Comic $comic)
     {
-        //
+        return view("comics.infoComics", compact('comic'));
     }
 
     /**

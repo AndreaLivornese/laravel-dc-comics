@@ -61,14 +61,20 @@
                     <tbody>
                         <tr>
                             <td>Art by:</td>
-                            <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, voluptas fugit, illo minus labore dolore </td>
+                            <td>
+                                @foreach($comic['artists'] as $artist)
+                                    {{$artist}},
+                                @endforeach
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 Written by:
                             </td>
                             <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quia repellendus ea minus 
+                                @foreach($comic['writers'] as $writer)
+                                    {{$writer}},
+                                @endforeach
                             </td>
                         </tr>
                     </tbody>
