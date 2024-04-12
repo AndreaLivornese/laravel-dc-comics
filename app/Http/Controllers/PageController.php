@@ -67,17 +67,37 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Comic $comic)
     {
-        //
+        return view("comics.edit_specs", compact('comic'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+
+        $comic->title = $data['title'];
+        $comic->description = $data['description'];
+        $comic->thumb = $data['src-img'];
+        $comic->price = $data['price'];
+        $comic->series = $data['series'];
+        $comic->sale_date = $data['sale_date'];
+        $comic->type = $data['type'];
+
+        //crea un arrey di parole dall stringa 
+        $str = explode(" ", $data['artists']);
+        $comic->artists = $str;
+
+        //crea un arrey di parole dall stringa
+        $str = explode(" ", $data['writers']);
+        $comic->writers = $str;
+
+        $comic->save();
+
+        return redirect()->route('comics.index');
     }
 
     /**

@@ -118,6 +118,11 @@
 
             </div>
 
+            <div class="btn-box">
+                <a href="{{route('comics.edit', $comic->id)}}" class="my_btn btn_secondary">Modifica specifiche</a>
+
+            </div>
+
         </div>
 
 
