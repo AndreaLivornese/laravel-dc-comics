@@ -447,6 +447,8 @@ padding-bottom: 90px;
 
 
 .btn-box{
+    display: flex;
+    gap:20px;
     margin-top: 30px;
 }
 
@@ -454,6 +456,12 @@ padding-bottom: 90px;
 
 .btn_secondary{
     background-color: #55BA59;
-    border-color:#357739;
+    border:1px solid #357739;
+    text-decoration: none;
+}
+
+.btn_danger{
+    background-color: #e92836;
+    border:1px solid #ac1a2f;
     text-decoration: none;
 }

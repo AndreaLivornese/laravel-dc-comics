@@ -121,6 +121,12 @@
             <div class="btn-box">
                 <a href="{{route('comics.edit', $comic->id)}}" class="my_btn btn_secondary">Modifica specifiche</a>
 
+                <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <button class="my_btn btn_danger">Elimina</button>
+                </form>
+
             </div>
 
         </div>
