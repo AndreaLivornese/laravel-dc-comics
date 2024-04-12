@@ -121,11 +121,36 @@
             <div class="btn-box">
                 <a href="{{route('comics.edit', $comic->id)}}" class="my_btn btn_secondary">Modifica specifiche</a>
 
-                <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
-                    @csrf
-                    @method("DELETE")
-                    <button class="my_btn btn_danger">Elimina</button>
-                </form>
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="my_btn btn_danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Elimina
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">ELIMINARE COMIC</h1>
+                            </div>
+                            <div class="modal-body">
+                            Sei sicuro di voler eliminare il comic?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="my_btn btn_secondary" data-bs-dismiss="modal">Close</button>
+                                <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button class="my_btn btn_danger">Elimina</button>
+                                </form>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
 
