@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
 {
@@ -77,6 +78,8 @@ class PageController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        $this->validation($request->all());
+
         $data = $request->all();
 
         $comic->title = $data['title'];
@@ -108,5 +111,51 @@ class PageController extends Controller
         $comic->delete();
 
         return redirect()->route('comics.index');
+    }
+
+
+    private function validation($data){
+
+        $valido = Validator::make($data,[
+            'title'=>'required|max:255',
+            'description'=>'required|max:1000',
+            'src-img'=>'required|max:600',
+            'price'=>'required|max:10',
+            'series'=>'required|max:255',
+            'sale_date'=>'required',
+            'type'=>'required|max:30',
+            'artists'=>'required|max:500',
+            'writers'=>'required|max:500'
+        ],
+        [
+            'title.required'=>'Il campo deve essere compilato',
+            'title.max'=>'Il campo può conterene al massimo :max caratteri',
+
+            'description.required'=>'Il campo deve essere compilato',
+            'description.max'=>'Il campo può conterene al massimo :max caratteri',
+
+            'src-img.required'=>'Il campo deve essere compilato',
+            'src-img.max'=>'Il campo può conterene al massimo :max caratteri',
+
+            'price.required'=>'Il campo deve essere compilato',
+            'price.max'=>'Il campo può conterene al massimo :max caratteri',
+
+            'series.required'=>'Il campo deve essere compilato',
+            'series.max'=>'Il campo può conterene al massimo :max caratteri',
+
+            'sale_date.required'=>'Il campo deve essere compilato',
+            'sale_date.max'=>'Il campo può conterene al massimo :max caratteri',
+
+            'type.required'=>'Il campo deve essere compilato',
+            'type.max'=>'Il campo può conterene al massimo :max caratteri',
+
+            'artists.required'=>'Il campo deve essere compilato',
+            'artists.max'=>'Il campo può conterene al massimo :max caratteri',
+
+            'writers.required'=>'Il campo deve essere compilato',
+            'writers.max'=>'Il campo può conterene al massimo :max caratteri',
+        ])->validate();
+
+
     }
 }
