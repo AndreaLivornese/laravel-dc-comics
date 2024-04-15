@@ -31,6 +31,9 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validation($request->all());
+        
         $data = $request->all();
 
         $newComic = new Comic();
